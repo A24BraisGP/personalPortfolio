@@ -1,0 +1,73 @@
+{%extends 'portfolio/base.html'%} {% block content %} {%load static%}
+<div class="container mt-3">
+	<h1 class="display-1">Brais Garcia's Personal Projects</h1>
+
+	<div class="card mx-auto" style="width: 18rem">
+		<img
+			src="{% static 'portfolio/7609718834_416d41c0af_w.jpg'%}"
+			alt="Happy dog with it's tongue out"
+			class="card-image-top"
+		/>
+		<div class="card-body">
+			<p class="card-text">
+				This happy doggo welcomes you to my personal projects page!
+				------ Here you'll be able to navigate through my projects!
+			</p>
+		</div>
+	</div>
+<br><br>
+	{% comment %}
+	<a href="{% static 'portfolio/UD0 - Estrutura real.pdf'%}" target="_blank"
+		>UD0 - Estrutura real</a
+	>
+	{% endcomment %} {% for project in projects %}
+
+	<ul class="list-group">
+		<li class="list-group-item">
+			<h2>{{project.title}}</h2>
+		</li>
+		<li class="list-group-item">
+			<h3>{{project.description}}</h3>
+		</li>
+
+		<li class="list-group-item">
+			{% if project.title == 'Second Project'%}
+			<script>
+				function bark() {
+					window.alert('Bark bark!');
+				}
+			</script>
+			<img
+				class="rounded mx-auto d-block"
+				src="{{project.image.url}}"
+				alt="{{project.image}}"
+				width="150"
+				height="150"
+				onClick="bark()"
+			/>
+			{%elif project.url%}
+			<li class="list-group-item">
+			<a href="{{project.url}}"
+				><img
+					class="rounded mx-auto d-block"
+					src="{{project.image.url}}"
+					alt="{{project.image}}"
+					width="150"
+					height="150"
+			/></a>
+		</li>
+		{% else %}
+			<img
+				class="rounded mx-auto d-block"
+				src="{{project.image.url}}"
+				alt="{{project.image}}"
+				width="150"
+				height="200"
+			/>
+			{% endif %}
+		</li>
+	</ul>
+	<br><br>
+	{% endfor %}
+</div>
+{% endblock%}

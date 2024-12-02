@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+{%extends 'blog/base.html'%} {% block content %} {%load static%}
+<div class="container mt-3">
+	<h1 class="display-1">BLOG ENTRIES</h1>
+	<br />
+	<hr class="border border-primary border-3 opacity-35" />
+	<br />
+	{%for blog in blogs%}
+	<ul class="list-group">
+		<li class="list-group-item">
+			<h2 class="display-2">
+				<a href="{% url 'blog:detail' blog.id %}">{{blog.title}}</a>
+			</h2>
+		</li>
+		<li class="list-group-item">
+			<h6 class="display-6">{{blog.data}}</h6>
+		</li>
+		<li class="list-group-item">
+			<span class="d-block text-truncate" style="max-width: 80%">
+				<p>{{blog.description}}</p>
+			</span>
+		</li>
+	</ul>
+	<br /><br />
+	{%endfor%}
+</div>
+
+<p class="text-center">
+	<a href="/" class="btn btn-primary">Link back to my projects</a>
+</p>
+{%endblock%}
