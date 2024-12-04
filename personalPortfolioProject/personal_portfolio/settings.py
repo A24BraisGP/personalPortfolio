@@ -130,6 +130,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 try: 
-    import local_settings as err
-except:
+    from local_settings import *
+except ImportError as err:
     print(f'NO LOCAL SETTINGS FILE -- PRODUCTION???')
