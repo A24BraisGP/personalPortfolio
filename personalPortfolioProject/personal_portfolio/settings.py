@@ -128,3 +128,8 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+
+try: 
+    import local_settings as err
+except:
+    print(f'NO LOCAL SETTINGS FILE -- PRODUCTION???')
